@@ -16,13 +16,13 @@ import javax.inject.Singleton
  * Created by costular on 16/03/2018.
  */
 @Singleton
-@Component(modules = [ApplicationModule::class, NetModule::class, DataModule::class])
+@Component(modules = [ApplicationModule::class, NetModule::class, DataModule::class, ViewModelModule::class])
 interface ApplicationComponent {
 
     fun getContext(): Context
     fun getRepository(): MarvelHeroesRepositoryImpl
     fun getHeroService(): MarvelHeroesService
     fun getNavigator(): Navigator
-    //fun getViewModelProviderFactory(): ViewModelProvider.Factory
+    fun getViewModelProviderFactory(): ViewModelProvider.Factory
 
 }

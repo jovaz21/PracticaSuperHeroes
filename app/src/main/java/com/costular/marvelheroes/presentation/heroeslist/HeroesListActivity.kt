@@ -1,6 +1,7 @@
 package com.costular.marvelheroes.presentation.heroeslist
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -24,6 +25,8 @@ class HeroesListActivity : AppCompatActivity(), HeroesListContract.View {
 
     //@Inject
     //lateinit var presenter: HeroesListPresenter
+
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
     lateinit var heroesListViewModel: HeroesListViewModel
 
@@ -58,11 +61,7 @@ class HeroesListActivity : AppCompatActivity(), HeroesListContract.View {
     }
 
     private fun setUpViewModel() {
-        //TODO: Inject through Constructor within HeroesListViewModel------
-        //heroesListViewModel = ViewModelProviders.of(this, viewModelFactory).get(HeroesListViewModel::class.java)
-        heroesListViewModel = ViewModelProviders.of(this).get(HeroesListViewModel::class.java)
-        heroesListViewModel.setup(this)
-        //TODO:------------------------------------------------------------
+        heroesListViewModel = ViewModelProviders.of(this, viewModelFactory).get(HeroesListViewModel::class.java)
         bindEvents()
         heroesListViewModel.loadMarvelHeroes()
     }
