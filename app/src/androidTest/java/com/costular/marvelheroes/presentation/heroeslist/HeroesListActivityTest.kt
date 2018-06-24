@@ -38,7 +38,7 @@ class HeroesListActivityTest {
 
         // This is very bad I would like to implement Idling Resources
         // with https://github.com/JakeWharton/okhttp-idling-resource
-        Thread.sleep(1000)
+        Thread.sleep(10000)
 
         onView(withId(R.id.heroesListRecycler))
                 .perform(RecyclerViewActions.actionOnItemAtPosition<HeroesListAdapter.HeroesViewHolder>(0, click()))

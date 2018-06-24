@@ -12,10 +12,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class MarvelHeroEntity(
         val name: String,
-        val photoUrl: String,
-        val realName: String,
-        val height: String,
-        val power: String,
-        val abilities: String,
-        val groups: Array<String>
+        val photoUrl: String = "",
+        val realName: String = "",
+        val height: String = "",
+        val power: String = "",
+        val abilities: String = "",
+        val groups: Array<String> = emptyArray()
 ) : Parcelable

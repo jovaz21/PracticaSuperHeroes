@@ -3,7 +3,6 @@ package com.costular.marvelheroes.di.components
 import com.costular.marvelheroes.di.modules.GetMarvelHeroesListModule
 import com.costular.marvelheroes.di.scopes.PerActivity
 import com.costular.marvelheroes.presentation.heroeslist.HeroesListActivity
-import com.costular.marvelheroes.presentation.heroeslist.HeroesListViewModel
 import dagger.Component
 
 /**
