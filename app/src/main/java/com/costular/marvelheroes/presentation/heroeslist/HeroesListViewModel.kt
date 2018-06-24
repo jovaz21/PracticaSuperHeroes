@@ -17,7 +17,7 @@ class HeroesListViewModel @Inject constructor(val marvelRepository: MarvelReposi
     val isLoadingState: MutableLiveData<Boolean> = MutableLiveData()
 
     fun loadMarvelHeroes() {
-        marvelRepository.getMarvelHeroesFromRemoteDataSource()
+        marvelRepository.getMarvelHeroes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { isLoadingState.postValue(true) }

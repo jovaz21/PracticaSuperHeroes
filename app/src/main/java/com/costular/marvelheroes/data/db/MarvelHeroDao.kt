@@ -19,7 +19,7 @@ abstract class MarvelHeroDao {
     abstract fun deleteAllHeroes()
 
     @Transaction
-    open fun removeAndInsertUsers(heroes: List<MarvelHeroEntity>) {
+    open fun removeAndInsertHeroes(heroes: List<MarvelHeroEntity>) {
         deleteAllHeroes()
         insertAll(heroes)
     }
