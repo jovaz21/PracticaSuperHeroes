@@ -20,14 +20,14 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideRemoteMarvelHeroesDataSoruce(marvelHeroesService: MarvelHeroesService)
+    fun provideRemoteMarvelHeroesDataSoruce(marvelHeroesService: MarvelHeroesService,
+                                            marvelHeroMapper: MarvelHeroMapper)
             : RemoteMarvelHeroesDataSource =
-            RemoteMarvelHeroesDataSource(marvelHeroesService)
+            RemoteMarvelHeroesDataSource(marvelHeroesService, marvelHeroMapper)
 
     @Provides
     @Singleton
     fun provideMarvelHeroesRepository(
-            marvelRemoteMarvelHeroesDataSource: RemoteMarvelHeroesDataSource,
-            marvelHeroMapper: MarvelHeroMapper): MarvelRepository =
-            MarvelRepository(marvelRemoteMarvelHeroesDataSource, marvelHeroMapper)
+            marvelRemoteMarvelHeroesDataSource: RemoteMarvelHeroesDataSource): MarvelRepository =
+            MarvelRepository(marvelRemoteMarvelHeroesDataSource)
 }

@@ -8,12 +8,9 @@ import io.reactivex.Observable
 /**
  * Marvel Repository
  */
-class MarvelRepository(private val remoteMarvelHeroesDataSource: RemoteMarvelHeroesDataSource,
-                                 private val marvelHeroesMapper: MarvelHeroMapper) {
+class MarvelRepository(private val remoteMarvelHeroesDataSource: RemoteMarvelHeroesDataSource) {
 
     // Get Marvel Heroes from Remote DataSource:
     fun getMarvelHeroesFromRemoteDataSource(): Observable<List<MarvelHeroEntity>> =
-            remoteMarvelHeroesDataSource
-                    .getMarvelHeroesList()
-                    .map { marvelHeroesMapper.transformList(it) }
+            remoteMarvelHeroesDataSource.getMarvelHeroesList()
 }

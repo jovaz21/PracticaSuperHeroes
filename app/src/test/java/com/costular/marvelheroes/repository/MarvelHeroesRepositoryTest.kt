@@ -4,6 +4,7 @@ import com.costular.marvelheroes.data.model.MarvelHero
 import com.costular.marvelheroes.data.model.mapper.MarvelHeroMapper
 import com.costular.marvelheroes.data.repository.MarvelRepository
 import com.costular.marvelheroes.data.repository.datasource.RemoteMarvelHeroesDataSource
+import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
@@ -18,18 +19,16 @@ class MarvelHeroesRepositoryTest {
 
     private val mockRemoteDataSource: RemoteMarvelHeroesDataSource = mock()
 
-    private lateinit var mapper: MarvelHeroMapper
     private lateinit var marvelRepository: MarvelRepository
 
     @Before
     fun setUp() {
-        mapper = MarvelHeroMapper()
-        marvelRepository = MarvelRepository(mockRemoteDataSource, mapper)
+        marvelRepository = MarvelRepository(mockRemoteDataSource)
     }
 
     @Test
     fun `repository should retrieve marvel heroes list`() {
-        val heroes = listOf(MarvelHero("Iron Man"), MarvelHero("Spider-Man"))
+        val heroes = listOf(MarvelHeroEntity("Iron Man"), MarvelHeroEntity("Spider-Man"))
         val observable = Observable.just(heroes)
         whenever(mockRemoteDataSource.getMarvelHeroesList()).thenReturn(observable)
 

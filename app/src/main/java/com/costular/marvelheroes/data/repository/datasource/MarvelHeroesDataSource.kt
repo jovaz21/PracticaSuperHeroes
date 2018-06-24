@@ -1,13 +1,14 @@
 package com.costular.marvelheroes.data.repository.datasource
 
 import com.costular.marvelheroes.data.model.MarvelHero
+import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import io.reactivex.Observable
 
 /**
- * Created by costular on 17/03/2018.
+ * Marvel Heroes DataSource
  */
 interface MarvelHeroesDataSource {
 
-    fun getMarvelHeroesList(): Observable<List<MarvelHero>>
-
+    // Get Marvel Heroes List
+    fun getMarvelHeroesList(): Observable<List<MarvelHeroEntity>>
 }

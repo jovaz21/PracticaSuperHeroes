@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 /**
- * Created by costular on 17/03/2018.
+ * Marvel Heroes Remote Service Definition (Retrofit Implemented => See Dagger NetModule)
  */
 interface MarvelHeroesService {
 
