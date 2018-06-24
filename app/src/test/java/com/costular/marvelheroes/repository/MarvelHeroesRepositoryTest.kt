@@ -1,8 +1,7 @@
 package com.costular.marvelheroes.repository
 
-import com.costular.marvelheroes.data.model.MarvelHero
-import com.costular.marvelheroes.data.model.mapper.MarvelHeroMapper
 import com.costular.marvelheroes.data.repository.MarvelRepository
+import com.costular.marvelheroes.data.repository.datasource.LocalMarvelHeroesDataSource
 import com.costular.marvelheroes.data.repository.datasource.RemoteMarvelHeroesDataSource
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.nhaarman.mockito_kotlin.mock
@@ -17,13 +16,14 @@ import org.junit.Test
  */
 class MarvelHeroesRepositoryTest {
 
+    private val mockLocalDataSource: LocalMarvelHeroesDataSource = mock()
     private val mockRemoteDataSource: RemoteMarvelHeroesDataSource = mock()
 
     private lateinit var marvelRepository: MarvelRepository
 
     @Before
     fun setUp() {
-        marvelRepository = MarvelRepository(mockRemoteDataSource)
+        marvelRepository = MarvelRepository(mockLocalDataSource, mockRemoteDataSource)
     }
 
     @Test

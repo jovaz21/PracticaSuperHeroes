@@ -1,7 +1,6 @@
 package com.costular.marvelheroes.data.repository.datasource
 
-import com.costular.marvelheroes.data.model.MarvelHero
-import com.costular.marvelheroes.data.model.mapper.MarvelHeroMapper
+import com.costular.marvelheroes.data.mapper.MarvelHeroMapper
 import com.costular.marvelheroes.data.net.MarvelHeroesService
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import io.reactivex.Observable

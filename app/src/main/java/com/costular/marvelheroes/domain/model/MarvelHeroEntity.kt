@@ -6,7 +6,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
- * Created by costular on 17/03/2018.
+ * Marvel Hero App Domain Entity
  */
 @SuppressLint("ParcelCreator")
 @Parcelize

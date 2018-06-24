@@ -1,10 +1,10 @@
-package com.costular.marvelheroes.data.model.mapper
+package com.costular.marvelheroes.data.mapper
 
 import com.costular.marvelheroes.data.model.MarvelHero
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 
 /**
- * Created by costular on 17/03/2018.
+ * MarvelHero to Domain MarvelHeroEntity
  */
 class MarvelHeroMapper : Mapper<MarvelHero, MarvelHeroEntity> {
 

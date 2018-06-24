@@ -1,10 +1,9 @@
 package com.costular.marvelheroes.mapper
 
 import com.costular.marvelheroes.data.model.MarvelHero
-import com.costular.marvelheroes.data.model.mapper.MarvelHeroMapper
+import com.costular.marvelheroes.data.mapper.MarvelHeroMapper
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import org.assertj.core.api.Assertions
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
