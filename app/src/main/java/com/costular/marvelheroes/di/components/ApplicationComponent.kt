@@ -3,7 +3,7 @@ package com.costular.marvelheroes.di.components
 import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
 import com.costular.marvelheroes.data.net.MarvelHeroesService
-import com.costular.marvelheroes.data.repository.MarvelHeroesRepositoryImpl
+import com.costular.marvelheroes.data.repository.MarvelRepository
 import com.costular.marvelheroes.di.modules.ApplicationModule
 import com.costular.marvelheroes.di.modules.DataModule
 import com.costular.marvelheroes.di.modules.NetModule
@@ -20,7 +20,7 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 
     fun getContext(): Context
-    fun getRepository(): MarvelHeroesRepositoryImpl
+    fun getRepository(): MarvelRepository
     fun getHeroService(): MarvelHeroesService
     fun getNavigator(): Navigator
     fun getViewModelProviderFactory(): ViewModelProvider.Factory

@@ -2,7 +2,7 @@ package com.costular.marvelheroes.repository
 
 import com.costular.marvelheroes.data.model.MarvelHero
 import com.costular.marvelheroes.data.model.mapper.MarvelHeroMapper
-import com.costular.marvelheroes.data.repository.MarvelHeroesRepositoryImpl
+import com.costular.marvelheroes.data.repository.MarvelRepository
 import com.costular.marvelheroes.data.repository.datasource.RemoteMarvelHeroesDataSource
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -19,12 +19,12 @@ class MarvelHeroesRepositoryTest {
     private val mockRemoteDataSource: RemoteMarvelHeroesDataSource = mock()
 
     private lateinit var mapper: MarvelHeroMapper
-    private lateinit var marvelHeroesRepository: MarvelHeroesRepositoryImpl
+    private lateinit var marvelRepository: MarvelRepository
 
     @Before
     fun setUp() {
         mapper = MarvelHeroMapper()
-        marvelHeroesRepository = MarvelHeroesRepositoryImpl(mockRemoteDataSource, mapper)
+        marvelRepository = MarvelRepository(mockRemoteDataSource, mapper)
     }
 
     @Test
@@ -33,7 +33,7 @@ class MarvelHeroesRepositoryTest {
         val observable = Observable.just(heroes)
         whenever(mockRemoteDataSource.getMarvelHeroesList()).thenReturn(observable)
 
-        val result = marvelHeroesRepository.getMarvelHeroesList()
+        val result = marvelRepository.getMarvelHeroesFromRemoteDataSource()
 
         verify(mockRemoteDataSource).getMarvelHeroesList()
 
