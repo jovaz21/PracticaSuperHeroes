@@ -1,5 +1,7 @@
 package com.costular.marvelheroes.presentation.heroeslist
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
@@ -20,8 +22,10 @@ class HeroesListActivity : AppCompatActivity(), HeroesListContract.View {
     @Inject
     lateinit var navigator: Navigator
 
-    @Inject
-    lateinit var presenter: HeroesListPresenter
+    //@Inject
+    //lateinit var presenter: HeroesListPresenter
+
+    lateinit var heroesListViewModel: HeroesListViewModel
 
     lateinit var adapter: HeroesListAdapter
 
@@ -42,7 +46,8 @@ class HeroesListActivity : AppCompatActivity(), HeroesListContract.View {
 
     private fun setUp() {
         setUpRecycler()
-        presenter.loadMarvelHeroes()
+        //presenter.loadMarvelHeroes()
+        setUpViewModel()
     }
 
     private fun setUpRecycler() {
@@ -50,6 +55,30 @@ class HeroesListActivity : AppCompatActivity(), HeroesListContract.View {
         heroesListRecycler.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         heroesListRecycler.itemAnimator = DefaultItemAnimator()
         heroesListRecycler.adapter = adapter
+    }
+
+    private fun setUpViewModel() {
+        //TODO: Inject through Constructor within HeroesListViewModel------
+        //heroesListViewModel = ViewModelProviders.of(this, viewModelFactory).get(HeroesListViewModel::class.java)
+        heroesListViewModel = ViewModelProviders.of(this).get(HeroesListViewModel::class.java)
+        heroesListViewModel.setup(this)
+        //TODO:------------------------------------------------------------
+        bindEvents()
+        heroesListViewModel.loadMarvelHeroes()
+    }
+
+    private fun bindEvents() {
+        heroesListViewModel.isLoadingState.observe(this, Observer { isLoading ->
+            isLoading?.let {
+                showLoading(it)
+            }
+        })
+
+        heroesListViewModel.marvelHeroesState.observe(this, Observer { userList ->
+            userList?.let {
+                showHeroesList(it)
+            }
+        })
     }
 
     private fun goToHeroDetail(hero: MarvelHeroEntity, image: View) {
@@ -65,7 +94,7 @@ class HeroesListActivity : AppCompatActivity(), HeroesListContract.View {
     }
 
     override fun onDestroy() {
-        presenter.destroy()
+        //presenter.destroy()
         super.onDestroy()
     }
 
