@@ -3,6 +3,7 @@ package com.costular.marvelheroes.util.mvvm
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.costular.marvelheroes.di.scopes.PerActivity
+import com.costular.marvelheroes.presentation.herodetail.HeroDetailViewModel
 import com.costular.marvelheroes.presentation.heroeslist.HeroesListViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -36,5 +37,4 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HeroesListViewModel::class)
     internal abstract fun getHeroesListViewModel(viewModel: HeroesListViewModel): ViewModel
-
 }

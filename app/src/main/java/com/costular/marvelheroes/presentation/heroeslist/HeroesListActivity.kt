@@ -31,8 +31,7 @@ class HeroesListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setUp()
     }
-
-    fun inject() {
+    private fun inject() {
         DaggerGetMarvelHeroesListComponent.builder()
                 .applicationComponent((application as MainApp).component)
                 .getMarvelHeroesListModule(GetMarvelHeroesListModule())
