@@ -53,7 +53,7 @@ class HeroDetailActivity : AppCompatActivity() {
     private fun setUpViewModel(hero: MarvelHeroEntity?) {
         heroDetailViewModel = ViewModelProviders.of(this).get(HeroDetailViewModel::class.java)
         bindEvents(hero)
-        heroDetailViewModel.onLikeUpdated(false) // TODO: hero.isLiked
+        heroDetailViewModel.setUp(hero)
     }
 
     // Bind LiveData Events
@@ -68,8 +68,7 @@ class HeroDetailActivity : AppCompatActivity() {
 
         /* set */
         heroDetailLikeButton.setOnClickListener {
-            // TODO: hero.isLiked
-            heroDetailViewModel.onLikeUpdated(!(heroDetailViewModel.likeState.value!!))
+            heroDetailViewModel.onLikeUpdated(hero, !(heroDetailViewModel.likeState.value!!))
         }
     }
     private fun showIsLiked(isLiked: Boolean) {
