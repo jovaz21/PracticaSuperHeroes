@@ -6,7 +6,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.ViewCompat
 import android.view.View
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
-import com.costular.marvelheroes.presentation.heroedetail.HeroDetailActivity
+import com.costular.marvelheroes.presentation.herodetail.HeroDetailActivity
 
 /**
  * Navigator Utility

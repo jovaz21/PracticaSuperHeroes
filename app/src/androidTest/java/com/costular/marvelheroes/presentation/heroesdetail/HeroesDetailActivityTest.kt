@@ -13,7 +13,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.costular.marvelheroes.R
 import com.costular.marvelheroes.presentation.FakeData
-import com.costular.marvelheroes.presentation.heroedetail.HeroDetailActivity
+import com.costular.marvelheroes.presentation.herodetail.HeroDetailActivity
 import org.junit.Test
 import org.junit.runner.RunWith
 

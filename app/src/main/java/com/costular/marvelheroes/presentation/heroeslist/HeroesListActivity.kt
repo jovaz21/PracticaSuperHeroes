@@ -20,9 +20,6 @@ import javax.inject.Inject
 
 class HeroesListActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var navigator: Navigator
-
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var heroesListViewModel: HeroesListViewModel
 
@@ -48,20 +45,26 @@ class HeroesListActivity : AppCompatActivity() {
         setUpViewModel()
     }
 
+    // Setup Recycler
     private fun setUpRecycler() {
-        adapter = HeroesListAdapter { hero, image -> goToHeroDetail(hero, image) }
+        adapter = HeroesListAdapter { hero, image -> onHeroSelected(hero, image) }
         heroesListRecycler.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         heroesListRecycler.itemAnimator = DefaultItemAnimator()
         heroesListRecycler.setHasFixedSize(true)
         heroesListRecycler.adapter = adapter
     }
+    private fun onHeroSelected(hero: MarvelHeroEntity, image: View) {
+        heroesListViewModel.onMarvelHeroSelected(this, hero, image)
+    }
 
+    // Setup ViewModel
     private fun setUpViewModel() {
         heroesListViewModel = ViewModelProviders.of(this, viewModelFactory).get(HeroesListViewModel::class.java)
         bindEvents()
         heroesListViewModel.loadMarvelHeroes()
     }
 
+    // Bind LiveData Events
     private fun bindEvents() {
         heroesListViewModel.isLoadingState.observe(this, Observer { isLoading ->
             isLoading?.let {
@@ -75,19 +78,14 @@ class HeroesListActivity : AppCompatActivity() {
             }
         })
     }
-
-    private fun goToHeroDetail(hero: MarvelHeroEntity, image: View) {
-        navigator.goToHeroDetail(this, hero, image)
-    }
-
-    fun showLoading(isLoading: Boolean) {
+    private fun showLoading(isLoading: Boolean) {
         heroesListLoading.visibility = if(isLoading) View.VISIBLE else View.GONE
     }
-
-    fun showHeroesList(heroes: List<MarvelHeroEntity>) {
+    private fun showHeroesList(heroes: List<MarvelHeroEntity>) {
         adapter.swapData(heroes)
     }
 
+    // On Destroyed
     override fun onDestroy() {
         super.onDestroy()
     }

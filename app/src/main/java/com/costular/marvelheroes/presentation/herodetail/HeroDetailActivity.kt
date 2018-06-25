@@ -1,12 +1,10 @@
-package com.costular.marvelheroes.presentation.heroedetail
+package com.costular.marvelheroes.presentation.herodetail
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.app.AppCompatDelegate
 import android.view.MenuItem
 import android.widget.ImageButton
-import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
