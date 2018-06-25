@@ -53,7 +53,7 @@ class HeroDetailActivity : AppCompatActivity() {
     private fun setUpViewModel(hero: MarvelHeroEntity?) {
         heroDetailViewModel = ViewModelProviders.of(this).get(HeroDetailViewModel::class.java)
         bindEvents(hero)
-        heroDetailViewModel.setUp(hero)
+        heroDetailViewModel.setUp(application.applicationContext, hero)
     }
 
     // Bind LiveData Events
