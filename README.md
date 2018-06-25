@@ -9,7 +9,7 @@ Marvel Heroes es una app para Android que lista algunos de los súperheroes de M
 ## Características ✨
 
 - Kotlin
-- MVP Clean (simplificado)
+- MVVM (uso de ViewModel + LiveData)
 - Dagger2
 - RxJava2
 
