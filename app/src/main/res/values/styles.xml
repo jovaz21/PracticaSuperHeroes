@@ -23,7 +23,7 @@
     <style name="HeroDetailName" parent="Base.TextAppearance.AppCompat.Title">
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginTop">2dp</item>
     </style>
 
     <style name="HeroDetailRealName">

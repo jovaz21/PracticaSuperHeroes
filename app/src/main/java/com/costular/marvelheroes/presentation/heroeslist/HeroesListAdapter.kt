@@ -20,17 +20,18 @@ import com.costular.marvelheroes.R
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import kotlinx.android.synthetic.main.item_hero.view.*
 
-        /**
- * Created by costular on 17/03/2018.
+/**
+ * Marvel Heroes List Adapter
  */
 typealias Click = (MarvelHeroEntity, ImageView) -> Unit
 
-class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesListAdapter.HeroesViewHolder>() {
+class HeroesListAdapter(val clickListener: Click): RecyclerView.Adapter<HeroesListAdapter.HeroesViewHolder>() {
 
     private lateinit var context: Context
 
     private var data: MutableList<MarvelHeroEntity> = mutableListOf()
 
+    // Creates ViewHolder from 'item_hero' Layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroesViewHolder {
         context = parent.context!!
         return HeroesViewHolder(
@@ -39,24 +40,31 @@ class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesL
         )
     }
 
+    // Data Management
     override fun getItemCount() = data.size
-
     override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) = holder.bind(data[position])
 
+    // Swap Current Data with New Data
     fun swapData(data: List<MarvelHeroEntity>) {
         this.data.clear()
         this.data.addAll(data)
         notifyDataSetChanged()
     }
 
+    // Clear Current Data
     fun clear() {
         this.data.clear()
         notifyDataSetChanged()
     }
 
-    inner class HeroesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    /** Marvel Hero Item View Stuff */
+    inner class HeroesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+        // Bind MarvelHeroEntity Data to ItemView
         fun bind(item: MarvelHeroEntity) = with(itemView) {
             kotlin.with(itemView) {
+
+                // Set 'heroImage' with Entity's photoUrl:
                 Glide.with(context)
                         .asBitmap()
                         .load(item.photoUrl)
@@ -72,11 +80,11 @@ class HeroesListAdapter(val clickListener: Click):  RecyclerView.Adapter<HeroesL
                         })
                         .into(heroImage)
 
+                /* set */
                 heroTitle.text = item.name
                 setOnClickListener { clickListener(item, heroImage) }
             }
         }
-
         fun loadColorsFromBitmap(bitmap: Bitmap) {
             with(itemView) {
                 Palette.from(bitmap).generate { palette ->

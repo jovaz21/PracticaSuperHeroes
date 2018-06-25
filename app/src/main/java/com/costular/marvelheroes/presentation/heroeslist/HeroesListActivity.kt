@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.costular.marvelheroes.R
 import com.costular.marvelheroes.di.components.DaggerGetMarvelHeroesListComponent
@@ -51,6 +52,7 @@ class HeroesListActivity : AppCompatActivity() {
         adapter = HeroesListAdapter { hero, image -> goToHeroDetail(hero, image) }
         heroesListRecycler.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         heroesListRecycler.itemAnimator = DefaultItemAnimator()
+        heroesListRecycler.setHasFixedSize(true)
         heroesListRecycler.adapter = adapter
     }
 

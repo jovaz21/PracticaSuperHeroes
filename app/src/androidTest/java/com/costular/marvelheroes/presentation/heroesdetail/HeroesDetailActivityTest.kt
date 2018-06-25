@@ -12,9 +12,8 @@ import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.costular.marvelheroes.R
-import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.costular.marvelheroes.presentation.FakeData
-import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroeDetailActivity
+import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroDetailActivity
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -24,7 +23,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class HeroesDetailActivityTest {
 
-    val activityTestRule = ActivityTestRule<MarvelHeroeDetailActivity>(MarvelHeroeDetailActivity::class.java, false, false)
+    val activityTestRule = ActivityTestRule<MarvelHeroDetailActivity>(MarvelHeroDetailActivity::class.java, false, false)
 
     @Test
     fun testBasicInitialization() {
@@ -36,9 +35,9 @@ class HeroesDetailActivityTest {
     fun testDataIsLoadedSuccessfully() {
         val intent = Intent(
                 InstrumentationRegistry.getTargetContext(),
-                MarvelHeroeDetailActivity::class.java
+                MarvelHeroDetailActivity::class.java
         ).apply {
-            putExtra(MarvelHeroeDetailActivity.PARAM_HEROE, FakeData.IRON_MAN)
+            putExtra(MarvelHeroDetailActivity.PARAM_HEROE, FakeData.IRON_MAN)
         }
         activityTestRule.launchActivity(intent)
 

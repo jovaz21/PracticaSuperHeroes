@@ -6,21 +6,22 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.ViewCompat
 import android.view.View
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
-import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroeDetailActivity
+import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroDetailActivity
 
 /**
- * Created by costular on 17/03/2018.
+ * Navigator Utility
  */
 class Navigator {
 
+    // Goto MarvelHeroDetail Activity
     fun goToHeroDetail(activity: Activity, hero: MarvelHeroEntity, image: View) {
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, image,
-                ViewCompat.getTransitionName(image))
-        val intent = Intent(activity, MarvelHeroeDetailActivity::class.java).apply {
-            putExtra(MarvelHeroeDetailActivity.PARAM_HEROE, hero)
+        val intent = Intent(activity, MarvelHeroDetailActivity::class.java).apply {
+            putExtra(MarvelHeroDetailActivity.PARAM_HEROE, hero)
         }
 
+        /* start */
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, image,
+                ViewCompat.getTransitionName(image))
         activity.startActivity(intent, options.toBundle())
     }
-
 }

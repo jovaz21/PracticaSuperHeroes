@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,21 +19,47 @@
         android:layout_height="wrap_content"
         android:transitionName="@string/image_transition" />
 
-    <TextView
-        android:id="@+id/heroDetailName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Iron Man"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        style="@style/HeroDetailName" />
+        android:orientation="horizontal"
+        android:paddingBottom="2dp">
 
-    <TextView
-        android:id="@+id/heroDetailRealName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Anthony Edward 'Tony' Stark"
-        style="@style/HeroDetailRealName" />
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/heroDetailName"
+                style="@style/HeroDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Iron Man"
+                tools:text="Iron Man" />
+
+            <TextView
+                android:id="@+id/heroDetailRealName"
+                style="@style/HeroDetailRealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anthony Edward 'Tony' Stark"
+                tools:text="Anthony Edward 'Tony' Stark" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/like_image_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:contentDescription="Favorito"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/ic_heartitem" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/heroDetailHeight"
