@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_hero_detail.*
 /**
  * Marvel Hero Detail
  */
-class MarvelHeroDetailActivity : AppCompatActivity() {
+class HeroDetailActivity : AppCompatActivity() {
     companion object {
         const val PARAM_HEROE = "heroe"
     }
@@ -67,8 +67,8 @@ class MarvelHeroDetailActivity : AppCompatActivity() {
         heroDetailAbilities.text    = hero.abilities
 
         /* set */
-        val likeImageBtn = findViewById(R.id.like_image_button) as ImageButton
-        likeImageBtn.setImageResource(R.drawable.ic_heartitem)
+        val likeImageButton = findViewById(R.id.heroDetailLikeButton) as ImageButton
+        likeImageButton.setImageResource(R.drawable.ic_heartitem)
     }
 
     // Handle Back Home Pressed

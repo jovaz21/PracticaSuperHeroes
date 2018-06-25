@@ -6,7 +6,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.ViewCompat
 import android.view.View
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
-import com.costular.marvelheroes.presentation.heroedetail.MarvelHeroDetailActivity
+import com.costular.marvelheroes.presentation.heroedetail.HeroDetailActivity
 
 /**
  * Navigator Utility
@@ -15,8 +15,8 @@ class Navigator {
 
     // Goto MarvelHeroDetail Activity
     fun goToHeroDetail(activity: Activity, hero: MarvelHeroEntity, image: View) {
-        val intent = Intent(activity, MarvelHeroDetailActivity::class.java).apply {
-            putExtra(MarvelHeroDetailActivity.PARAM_HEROE, hero)
+        val intent = Intent(activity, HeroDetailActivity::class.java).apply {
+            putExtra(HeroDetailActivity.PARAM_HEROE, hero)
         }
 
         /* start */

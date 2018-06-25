@@ -8,7 +8,7 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingBottom="16dp">
@@ -37,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Iron Man"
                 tools:text="Iron Man" />
 
             <TextView
@@ -45,16 +44,14 @@
                 style="@style/HeroDetailRealName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anthony Edward 'Tony' Stark"
                 tools:text="Anthony Edward 'Tony' Stark" />
 
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/like_image_button"
-            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/heroDetailLikeButton"
+            style="@style/HeroDetailLikeButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
             android:contentDescription="Favorito"
             android:scaleType="fitEnd"
             app:srcCompat="@drawable/ic_heartitem" />

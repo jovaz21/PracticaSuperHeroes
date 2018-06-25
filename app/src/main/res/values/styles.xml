@@ -31,6 +31,10 @@
         <item name="android:layout_marginRight">16dp</item>
     </style>
 
+    <style name="HeroDetailLikeButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_height">60dp</item>
+    </style>
+
     <style name="HeroDetailHeight">
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>

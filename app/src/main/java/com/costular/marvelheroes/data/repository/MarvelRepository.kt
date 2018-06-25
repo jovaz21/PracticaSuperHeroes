@@ -20,14 +20,14 @@ class MarvelRepository(private val localMarvelHeroesDataSource: LocalMarvelHeroe
     }
 
     // Get Marvel Heroes from Local DataSource:
-    private fun getMarvelHeroesFromLocalDataSource(): Observable<List<MarvelHeroEntity>> =
+    fun getMarvelHeroesFromLocalDataSource(): Observable<List<MarvelHeroEntity>> =
             localMarvelHeroesDataSource.getMarvelHeroesList()
 
     // Get Marvel Heroes from Remote DataSource:
     // - When heroes are correctly retrieved from the remote DataSource,
     // we store them into the local one
     // - Conflicted registers (already created) are replaced by new incoming data
-    private fun getMarvelHeroesFromRemoteDataSource(): Observable<List<MarvelHeroEntity>> =
+    fun getMarvelHeroesFromRemoteDataSource(): Observable<List<MarvelHeroEntity>> =
             remoteMarvelHeroesDataSource.getMarvelHeroesList()
                     .doOnNext {
                         localMarvelHeroesDataSource.saveMarvelHeroes(it)

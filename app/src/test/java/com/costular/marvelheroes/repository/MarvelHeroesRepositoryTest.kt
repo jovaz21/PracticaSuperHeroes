@@ -8,6 +8,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Observable
+import io.reactivex.rxkotlin.toObservable
 import org.junit.Before
 import org.junit.Test
 
@@ -30,12 +31,12 @@ class MarvelHeroesRepositoryTest {
     fun `repository should retrieve marvel heroes list`() {
         val heroes = listOf(MarvelHeroEntity("Iron Man"), MarvelHeroEntity("Spider-Man"))
         val observable = Observable.just(heroes)
+
         whenever(mockRemoteDataSource.getMarvelHeroesList()).thenReturn(observable)
 
         val result = marvelRepository.getMarvelHeroesFromRemoteDataSource()
 
         verify(mockRemoteDataSource).getMarvelHeroesList()
-
         result.test()
                 .assertValue { it.size == 2 }
                 .assertValue { it.first().name == heroes.first().name }
