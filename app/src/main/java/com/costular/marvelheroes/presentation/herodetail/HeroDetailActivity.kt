@@ -1,6 +1,7 @@
 package com.costular.marvelheroes.presentation.herodetail
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -14,9 +15,13 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.costular.marvelheroes.R
+import com.costular.marvelheroes.di.components.DaggerGetMarvelHeroesListComponent
+import com.costular.marvelheroes.di.modules.GetMarvelHeroesListModule
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
+import com.costular.marvelheroes.presentation.MainApp
 import kotlinx.android.synthetic.main.activity_hero_detail.*
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 /**
  * Marvel Hero Detail
@@ -26,10 +31,14 @@ class HeroDetailActivity : AppCompatActivity() {
         const val PARAM_HEROE = "heroe"
     }
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var heroDetailViewModel: HeroDetailViewModel
 
     // On Create
-    override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        inject()
+        super.onCreate(savedInstanceState)
 
         /* set */
         setContentView(R.layout.activity_hero_detail)
@@ -48,12 +57,19 @@ class HeroDetailActivity : AppCompatActivity() {
         /* fill */
         hero?.let { fillHeroData(it) }
     }
+    private fun inject() {
+        DaggerGetMarvelHeroesListComponent.builder()
+                .applicationComponent((application as MainApp).component)
+                .getMarvelHeroesListModule(GetMarvelHeroesListModule())
+                .build()
+                .inject(this)
+    }
 
     // Setup ViewModel
     private fun setUpViewModel(hero: MarvelHeroEntity?) {
-        heroDetailViewModel = ViewModelProviders.of(this).get(HeroDetailViewModel::class.java)
+        heroDetailViewModel = ViewModelProviders.of(this, viewModelFactory).get(HeroDetailViewModel::class.java)
         bindEvents(hero)
-        heroDetailViewModel.setUp(application.applicationContext, hero)
+        heroDetailViewModel.setUp(hero)
     }
 
     // Bind LiveData Events

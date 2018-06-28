@@ -3,6 +3,7 @@ package com.costular.marvelheroes.di.modules
 import android.app.Application
 import android.content.Context
 import com.costular.marvelheroes.presentation.MainApp
+import com.costular.marvelheroes.presentation.util.FavoritesManager
 import com.costular.marvelheroes.presentation.util.Navigator
 import dagger.Module
 import dagger.Provides
@@ -26,4 +27,7 @@ class ApplicationModule(private val application: MainApp) {
     @Singleton
     fun provideNavigator(): Navigator = Navigator()
 
+    @Provides
+    @Singleton
+    fun provideFavoritesManager(): FavoritesManager = FavoritesManager(provideContext())
 }

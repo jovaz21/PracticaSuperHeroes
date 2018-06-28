@@ -37,4 +37,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HeroesListViewModel::class)
     internal abstract fun getHeroesListViewModel(viewModel: HeroesListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HeroDetailViewModel::class)
+    internal abstract fun getHeroDetailViewModel(viewModel: HeroDetailViewModel): ViewModel
 }

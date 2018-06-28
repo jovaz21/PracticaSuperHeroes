@@ -7,6 +7,7 @@ import com.costular.marvelheroes.data.repository.MarvelRepository
 import com.costular.marvelheroes.di.modules.ApplicationModule
 import com.costular.marvelheroes.di.modules.DataModule
 import com.costular.marvelheroes.di.modules.NetModule
+import com.costular.marvelheroes.presentation.util.FavoritesManager
 import com.costular.marvelheroes.presentation.util.Navigator
 import com.costular.marvelheroes.util.mvvm.ViewModelModule
 import dagger.Component
@@ -24,5 +25,5 @@ interface ApplicationComponent {
     fun getHeroService(): MarvelHeroesService
     fun getNavigator(): Navigator
     fun getViewModelProviderFactory(): ViewModelProvider.Factory
-
+    fun getFavoritesManager(): FavoritesManager
 }

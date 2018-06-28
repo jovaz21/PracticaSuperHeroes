@@ -14,4 +14,5 @@ import dagger.Component
 interface GetMarvelHeroesListComponent {
 
     fun inject(marvelListActivity: HeroesListActivity)
+    fun inject(marvelDetailActivity: HeroDetailActivity)
 }
