@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie_container"
     android:layout_width="match_parent"
@@ -23,5 +24,13 @@
         tools:text="Iron Man"
         android:layout_gravity="bottom"
         style="@style/HeroTitle" />
+
+    <ImageButton
+        android:id="@+id/heroListItemLikeButton"
+        style="@style/HeroListItemLikeButton"
+        android:layout_width="match_parent"
+        android:contentDescription="Favorito"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/ic_heartitem" />
 
 </FrameLayout>

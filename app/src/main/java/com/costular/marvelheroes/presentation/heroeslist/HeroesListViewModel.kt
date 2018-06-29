@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import com.costular.marvelheroes.data.repository.MarvelRepository
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
+import com.costular.marvelheroes.presentation.util.FavoritesManager
 import com.costular.marvelheroes.presentation.util.Navigator
 import com.costular.marvelheroes.util.mvvm.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,7 +15,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class HeroesListViewModel @Inject constructor(val navigator: Navigator, val marvelRepository: MarvelRepository): BaseViewModel() {
+class HeroesListViewModel @Inject constructor(val navigator: Navigator, val favoritesManager: FavoritesManager, val marvelRepository: MarvelRepository): BaseViewModel() {
     val marvelHeroesState: MutableLiveData<List<MarvelHeroEntity>> = MutableLiveData()
     val isLoadingState: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -39,5 +40,10 @@ class HeroesListViewModel @Inject constructor(val navigator: Navigator, val marv
     // On Marvel Hero Selected
     fun onMarvelHeroSelected(activity: Activity, hero: MarvelHeroEntity, image: View) {
         navigator.goToHeroDetail(activity, hero, image)
+    }
+
+    // On Like Updated
+    fun onLikeUpdated(hero: MarvelHeroEntity, value: Boolean) {
+        favoritesManager.setLiked(hero, value)
     }
 }

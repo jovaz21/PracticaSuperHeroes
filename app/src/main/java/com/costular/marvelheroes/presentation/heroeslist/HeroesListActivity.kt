@@ -14,11 +14,14 @@ import com.costular.marvelheroes.di.components.DaggerGetMarvelHeroesListComponen
 import com.costular.marvelheroes.di.modules.GetMarvelHeroesListModule
 import com.costular.marvelheroes.domain.model.MarvelHeroEntity
 import com.costular.marvelheroes.presentation.MainApp
+import com.costular.marvelheroes.presentation.util.FavoritesManager
 import com.costular.marvelheroes.presentation.util.Navigator
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class HeroesListActivity : AppCompatActivity() {
+
+    @Inject lateinit var favoritesManager: FavoritesManager
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var heroesListViewModel: HeroesListViewModel
@@ -46,11 +49,20 @@ class HeroesListActivity : AppCompatActivity() {
 
     // Setup Recycler
     private fun setUpRecycler() {
-        adapter = HeroesListAdapter { hero, image -> onHeroSelected(hero, image) }
+
+        /* set */
+        adapter = HeroesListAdapter(this, favoritesManager,
+                { hero, isLiked -> onLikeUpdated(hero, isLiked) },
+                { hero, image   -> onHeroSelected(hero, image) })
+
+        /* set */
         heroesListRecycler.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         heroesListRecycler.itemAnimator = DefaultItemAnimator()
         heroesListRecycler.setHasFixedSize(true)
         heroesListRecycler.adapter = adapter
+    }
+    private fun onLikeUpdated(hero: MarvelHeroEntity, value: Boolean) {
+        heroesListViewModel.onLikeUpdated(hero, value)
     }
     private fun onHeroSelected(hero: MarvelHeroEntity, image: View) {
         heroesListViewModel.onMarvelHeroSelected(this, hero, image)
