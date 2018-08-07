@@ -34,7 +34,7 @@ class DataModule {
     @Singleton
     @Provides
     fun provideMarvelHeroDatabase(context: Context): MarvelHeroDatabase =
-            Room.databaseBuilder(context, MarvelHeroDatabase::class.java, "marvel.db").build()
+            Room.databaseBuilder(context, MarvelHeroDatabase::class.java, "marvel.db").fallbackToDestructiveMigration().build()
 
     @Provides
     @Singleton
